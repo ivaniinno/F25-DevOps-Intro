@@ -1,3 +1,8 @@
+This is the fork of the reposity, which description is given below. \
+All authorship credits go to the Dmitriy Creed https://github.com/Cre-eD. \
+This repository is specifically forked for the work on elective course of DevOps made by the Dmitriy Creed, Bachelor level, 3rd year
+by Ivan Ilyichev, B23-DS-01 study group.
+
 # 🚀 DevOps Introduction Course: Principles, Practices & Tooling
 
 [![Labs](https://img.shields.io/badge/Labs-80%25-blue)](#-lab-based-learning-experience)
