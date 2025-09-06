@@ -1,0 +1,1 @@
+Signing commits allows others to be sure about the author(s) of work made, thus the trust to the commits is maintained. This approach uses some cryptographic mechanisms and prevents modifying anything after changes committed, otherwise "verified" status will disappear. Overall, signing is a good practice for not only for secure and important projects, for all ones.
