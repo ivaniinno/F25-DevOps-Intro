@@ -263,3 +263,55 @@ f0485c0 Publish lec1
 - **Soft Reset**: HEAD moved back, index kept changes, working tree unchanged
 - **Hard Reset**: HEAD moved back, index cleared, working tree reverted
 - **Reflog Recovery**: Successfully restored to previous commit state
+
+
+## Task 3 - Visualize Commit History
+
+### Commands Used:
+- `git switch -c side-branch` - Created and switched to side branch
+- `git switch -` - Switched back to previous branch
+- `git log --oneline --graph --all` - Showed visual commit graph
+
+### Graph Output:
+```
+* 0cb3052 (side-branch) Side branch commit
+| * 97c2eb1 (git-reset-practice) Second commit
+| * a075075 First commit
+|/  
+* 9815971 (HEAD -> feature/lab2) feat: add second line to obejct test
+* 9d0dbf7 feat: add object test file
+*   6689128 (origin/main, origin/HEAD, main) Merge branch 'inno-devops-labs:main' into main
+|\  
+| * 3f80c83 (upstream/main, upstream/HEAD) feat: publish lec2
+| * 499f2ba feat: publish lab2
+| | * dea1838 (origin/feature/lab1, feature/lab1) Update README.md
+| | * c615225 docs: add commit signing summary
+| |/  
+|/|   
+* | 4d55fe8 docs: add PR template
+|/  
+* af0da89 feat: update lab1
+* 74a8c27 Publish lab1
+* f0485c0 Publish lec1
+* 31dd11b Publish README.md
+```
+
+### Commit Messages:
+- Side branch commit
+- Second commit
+- First commit
+- feat: add second line to obejct test
+- feat: add object test file
+- Merge branch 'inno-devops-labs:main' into main
+- feat: publish lec2
+- feat: publish lab2
+- Update README.md
+- docs: add commit signing summary
+- docs: add PR template
+- feat: update lab1
+- Publish lab1
+- Publish lec1
+- Publish README.md
+
+### Reflection:
+The graph visualization helps understand branch relationships and commit history by showing how branches diverge and merge, making it easier to track the development flow and identify where changes originated.
