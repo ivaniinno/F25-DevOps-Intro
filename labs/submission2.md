@@ -126,3 +126,140 @@ feat: add second line to obejct test
 - **Blob**: Stores the actual file content as a binary object
 - **Tree**: Represents a directory structure, listing files and subdirectories with their permissions and object hashes
 - **Commit**: Contains metadata about the commit including author, date, message, and references to tree and parent commits
+
+
+## Task 2 - Reset and Reflog Recovery
+
+### Commands Used:
+- `git log --oneline` - Showed commit logs
+- `git status` - Showed current files status
+- `git reset --soft HEAD~1` - Moved HEAD back one commit, kept changes staged
+- `git status` - Showed current files status
+- `git log --oneline` - Showed commit logs
+- `git reset --hard HEAD~1` - Moved HEAD back one commit, discarded all changes
+- `git status` - Showed current files status
+- `git log --oneline` - Showed commit logs
+- `git reflog` - Showed history of HEAD movements
+- `git reset --hard <reflog_hash>` (97c2eb1) - Recovered to previous state
+- `git log --oneline` - Showed commit logs
+
+### Outputs, respectively:
+
+**1) Git Log Output (Initial):**
+```
+107dff0 (HEAD -> git-reset-practice) Third commit
+97c2eb1 Second commit
+a075075 First commit
+9815971 (feature/lab2) feat: add second line to obejct test
+9d0dbf7 feat: add object test file
+6689128 (origin/main, origin/HEAD, main) Merge branch 'inno-devops-labs:main' into main
+3f80c83 (upstream/main, upstream/HEAD) feat: publish lec2
+499f2ba feat: publish lab2
+4d55fe8 docs: add PR template
+af0da89 feat: update lab1
+74a8c27 Publish lab1
+f0485c0 Publish lec1
+31dd11b Publish README.md
+```
+
+**2) Git Status Output (Initial):**
+```
+On branch git-reset-practice
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+3) *Nothing*
+
+4) On branch git-reset-practice
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+5) 97c2eb1 (HEAD -> git-reset-practice) Second commit
+a075075 First commit
+9815971 (feature/lab2) feat: add second line to obejct test
+9d0dbf7 feat: add object test file
+6689128 (origin/main, origin/HEAD, main) Merge branch 'inno-devops-labs:main' into main
+3f80c83 (upstream/main, upstream/HEAD) feat: publish lec2
+499f2ba feat: publish lab2
+4d55fe8 docs: add PR template
+af0da89 feat: update lab1
+74a8c27 Publish lab1
+f0485c0 Publish lec1
+31dd11b Publish README.md
+
+6) HEAD is now at a075075 First commit 
+
+7) On branch git-reset-practice
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+8) a075075 (HEAD -> git-reset-practice) First commit
+9815971 (feature/lab2) feat: add second line to obejct test
+9d0dbf7 feat: add object test file
+6689128 (origin/main, origin/HEAD, main) Merge branch 'inno-devops-labs:main' into main
+3f80c83 (upstream/main, upstream/HEAD) feat: publish lec2
+499f2ba feat: publish lab2
+4d55fe8 docs: add PR template
+af0da89 feat: update lab1
+74a8c27 Publish lab1
+f0485c0 Publish lec1
+31dd11b Publish README.md
+
+9) a075075 (HEAD -> git-reset-practice) HEAD@{0}: reset: moving to HEAD~1
+97c2eb1 HEAD@{1}: reset: moving to HEAD~1
+107dff0 HEAD@{2}: reset: moving to 107dff0
+a075075 (HEAD -> git-reset-practice) HEAD@{3}: reset: moving to HEAD~1
+97c2eb1 HEAD@{4}: reset: moving to HEAD~1
+107dff0 HEAD@{5}: commit: Third commit
+97c2eb1 HEAD@{6}: commit: Second commit
+a075075 (HEAD -> git-reset-practice) HEAD@{7}: commit: First commit
+9815971 (feature/lab2) HEAD@{8}: checkout: moving from feature/lab2 to git-reset-practice
+9815971 (feature/lab2) HEAD@{9}: commit: feat: add second line to obejct test
+9d0dbf7 HEAD@{10}: commit: feat: add object test file
+6689128 (origin/main, origin/HEAD, main) HEAD@{11}: checkout: moving from main to feature/lab2
+6689128 (origin/main, origin/HEAD, main) HEAD@{12}: checkout: moving from feature/lab1 to main
+dea1838 (origin/feature/lab1, feature/lab1) HEAD@{13}: reset: moving to origin/feature/lab1
+c615225 HEAD@{14}: checkout: moving from main to feature/lab1
+6689128 (origin/main, origin/HEAD, main) HEAD@{15}: checkout: moving from feature/lab1 to main
+c615225 HEAD@{16}: checkout: moving from main to feature/lab1
+6689128 (origin/main, origin/HEAD, main) HEAD@{17}: reset: moving to origin/main
+4d55fe8 HEAD@{18}: checkout: moving from feature/lab1 to main
+c615225 HEAD@{19}: checkout: moving from main to feature/lab1
+4d55fe8 HEAD@{20}: checkout: moving from main to main
+4d55fe8 HEAD@{21}: checkout: moving from feature/lab1 to main
+c615225 HEAD@{22}: commit: docs: add commit signing summary
+4d55fe8 HEAD@{23}: checkout: moving from main to feature/lab1
+4d55fe8 HEAD@{24}: commit: docs: add PR template
+af0da89 HEAD@{25}: clone: from https://github.com/ivaniinno/F25-DevOps-Intro.git
+
+10) HEAD is now at 97c2eb1 Second commit
+
+11) 97c2eb1 (HEAD -> git-reset-practice) Second commit
+a075075 First commit
+9815971 (feature/lab2) feat: add second line to obejct test
+9d0dbf7 feat: add object test file
+6689128 (origin/main, origin/HEAD, main) Merge branch 'inno-devops-labs:main' into main
+3f80c83 (upstream/main, upstream/HEAD) feat: publish lec2
+499f2ba feat: publish lab2
+4d55fe8 docs: add PR template
+af0da89 feat: update lab1
+74a8c27 Publish lab1
+f0485c0 Publish lec1
+31dd11b Publish README.md
+```
+
+### Changes Analysis:
+- **Soft Reset**: HEAD moved back, index kept changes, working tree unchanged
+- **Hard Reset**: HEAD moved back, index cleared, working tree reverted
+- **Reflog Recovery**: Successfully restored to previous commit state
