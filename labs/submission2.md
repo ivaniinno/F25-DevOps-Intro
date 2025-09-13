@@ -315,3 +315,16 @@ f0485c0 Publish lec1
 
 ### Reflection:
 The graph visualization helps understand branch relationships and commit history by showing how branches diverge and merge, making it easier to track the development flow and identify where changes originated.
+
+
+## Task 4 - Tagging Commits
+
+### Commands Used:
+- `git tag v1.0.0` - Created lightweight tag
+- `git push origin v1.0.0` - Pushed tag to remote
+
+### Tag Information:
+- **v1.0.0**: 9815971 - Initial version
+
+### Why Tags Matter:
+Tags are crucial for versioning as they mark specific points in history for releases, trigger CI/CD pipelines, and help create release notes. They provide stable references to specific code states.
