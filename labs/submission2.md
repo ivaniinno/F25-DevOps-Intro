@@ -328,3 +328,189 @@ The graph visualization helps understand branch relationships and commit history
 
 ### Why Tags Matter:
 Tags are crucial for versioning as they mark specific points in history for releases, trigger CI/CD pipelines, and help create release notes. They provide stable references to specific code states.
+
+
+## Task 5 - git switch vs git checkout vs git restore
+
+### Commands Used:
+- `git switch -c cmd-compare` - Modern branch creation and switching
+- `git branch` - Show all branches and point by * to the current one
+- `git switch -` - Toggle between branches to the previous one
+- `git branch` - Show all branches and point by * to the current one
+- `git checkout -b cmd-compare-2` - Legacy branch creation
+- `git branch` - Show all branches and point by * to the current one
+
+- `echo "scratch" >> demo.txt` - Append to the "demo.txt" and create if if not yet
+- `git add demo.txt` - Add "demo.txt"
+- `git commit -m "feat: add demo file for testing"` - Commit "demo.txt"
+- `git status` - Show the status on files after commiting "demo.txt"
+- `git restore demo.txt` - Discard working tree changes
+- `git status` - Show the status on files after restoring "demo.txt"
+- `echo "staged content" >> demo.txt` - Append new changes
+- `git add demo.txt` - Add new "demo.txt"
+- `git status` - Show the status after updating "demo.txt"
+- `git restore --staged demo.txt` - Unstage file
+- `git status` - Show the status after unstaging
+- `git restore --source=HEAD~1 demo.txt` - Restore from specific commit, i.e., delete demo.txt
+- `git status` - Show final file status (deleted)
+
+### Outputs, respectively:
+
+**1) Git Switch Output:**
+```
+Switched to a new branch 'cmd-compare'
+```
+
+**2) Git Branch Output (After creating cmd-compare):**
+```
+* cmd-compare
+  feature/lab1
+  feature/lab2
+  git-reset-practice
+  main
+  side-branch
+``` 
+
+**3) Git Switch Output (Toggle back):**
+```
+Switched to branch 'feature/lab2'
+```
+
+**4) Git Branch Output (After switching back to feature/lab2):**
+```
+  cmd-compare
+  feature/lab1
+* feature/lab2
+  git-reset-practice
+  main
+  side-branch
+```
+
+**5) Git Checkout Output:**
+```
+Switched to a new branch 'cmd-compare-2'
+```
+
+**6) Git Branch Output (After creating cmd-compare-2):**
+```
+  cmd-compare
+* cmd-compare-2
+  feature/lab1
+  feature/lab2
+  git-reset-practice
+  main
+  side-branch
+```
+
+**7) Git Status Output (After creating demo.txt):**
+```
+On branch cmd-compare-2
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        demo.txt
+        labs/submission2.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+**8) Git Status Output (After adding demo.txt):**
+```
+On branch cmd-compare-2
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   demo.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+```
+
+**9) Git Commit Output:**
+```
+[cmd-compare-2 881dc8b] feat: add demo file for testing
+ 1 file changed, 1 insertion(+)
+ create mode 100644 demo.txt
+```
+**10) Git Status Output (After commit):**
+```
+On branch cmd-compare-2
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+**11) Git Status Output (After git restore demo.txt):**
+```
+On branch cmd-compare-2
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+```
+
+**12) Git Status Output (After modifying demo.txt):**
+```
+On branch cmd-compare-2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   demo.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+**13) Git Status Output (After adding modified demo.txt):**
+```
+On branch cmd-compare-2
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   demo.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+```
+
+**14) Git Status Output (After git restore --staged demo.txt):**
+```
+On branch cmd-compare-2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   demo.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+**15) Git Status Output (After git restore --source=HEAD~1 demo.txt):**
+```
+On branch cmd-compare-2
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    demo.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        labs/submission2.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+
+
+### When to Use Each:
+- **git switch**: Use for branch operations (create, switch, delete branches) - it's explicit and clear
+- **git checkout**: Legacy command that's overloaded - avoid for new workflows
+- **git restore**: Use for file restoration operations - it's specific and unambiguous
