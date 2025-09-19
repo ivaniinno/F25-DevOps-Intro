@@ -44,7 +44,6 @@ I extended the existing GitHub Actions workflow to include:
 
 After I ran workflow manually, I additionally added a command for gathering system information as follows:
 
-
 ```yaml
 on: 
   push:
@@ -74,5 +73,3 @@ on:
 ### System Information Gathered
 The workflow now captures comprehensive system information from the GitHub-hosted runner, including hardware specifications and operating system details, which is useful for debugging and understanding the execution environment: [Link to the run](https://github.com/ivaniinno/F25-DevOps-Intro/actions/runs/17866976689)
 ![System Information Gathering](2.png)
-
-
