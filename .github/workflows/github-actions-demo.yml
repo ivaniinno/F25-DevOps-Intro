@@ -18,3 +18,18 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - name: Gather System Information
+        run: |
+          echo "=== SYSTEM INFORMATION ==="
+          echo "OS: $(uname -a)"
+          echo "CPU Info:"
+          cat /proc/cpuinfo | grep "model name" | head -1
+          echo "CPU Cores: $(nproc)"
+          echo "Memory Info:"
+          cat /proc/meminfo | grep "MemTotal"
+          echo "Disk Space:"
+          df -h
+          echo "Runner OS: ${{ runner.os }}"
+          echo "Runner Architecture: ${{ runner.arch }}"
+          echo "Runner Name: ${{ runner.name }}"
+          echo "=== END SYSTEM INFORMATION ==="
